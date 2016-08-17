@@ -4,6 +4,8 @@ package evaluation
 import types.{Accuracy, Label}
 
 class F1 extends Evaluator {
+  // 必要なフィールドがあれば適宜足すこと
+
   def add(predicted: Label, supervised: Label): Unit = {
     // ここを変更してtrue/false positive/negativeを集計
   }
