@@ -1,17 +1,15 @@
 import sbt._
 import Keys._
 
-lazy val slearn = (project in file(".")).
+lazy val internml = (project in file(".")).
   settings(
-    name := "slearn",
+    name := "internml",
     version := "0.0.1",
     scalaVersion := "2.11.8",
 
     // Depenency
     libraryDependencies ++= Seq(
-      // "org.scala-lang" % "scala-reflect" % scalaVersion.value,
-      "org.reflections" % "reflections" % "0.9.9-RC1",
-      "org.scalatest" %% "scalatest" % "2.2.6" % "test"
+      "org.reflections" % "reflections" % "0.9.9-RC1"
     ),
 
     // Compilation

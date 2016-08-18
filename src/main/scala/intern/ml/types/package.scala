@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 
 package object types {
   type Feature = Double

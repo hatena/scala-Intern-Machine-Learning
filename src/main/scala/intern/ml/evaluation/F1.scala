@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 package evaluation
 
 import types.Label
@@ -12,6 +12,6 @@ class F1 extends Evaluator {
 
   def accuracy: Double = {
     // ここを変更してF1スコアを計算
-    1.0
+    0.0
   }
 }

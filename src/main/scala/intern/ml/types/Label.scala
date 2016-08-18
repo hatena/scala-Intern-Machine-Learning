@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 package types
 
 sealed abstract class Label(value: Int) {

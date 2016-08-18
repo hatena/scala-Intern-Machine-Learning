@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 package evaluation
 
 import types.Label

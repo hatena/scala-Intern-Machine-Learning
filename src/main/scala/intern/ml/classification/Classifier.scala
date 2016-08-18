@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 package classification
 
 import types.{DataSet, Features, Label}

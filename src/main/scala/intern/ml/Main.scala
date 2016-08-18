@@ -1,7 +1,7 @@
-package slearn
+package intern.ml
 
 object Main {
-  val commands = cli.CLI.fromNamespace("slearn.cli")
+  val commands = cli.CLI.fromNamespace("intern.ml.cli")
 
   def showHelp(): Unit =
     println(s"Commands:\n ${commands.list.map(_.name).mkString("\n ")}")

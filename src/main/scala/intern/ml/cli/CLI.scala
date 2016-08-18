@@ -1,4 +1,4 @@
-package slearn
+package intern.ml
 package cli
 
 import org.reflections.Reflections
