@@ -21,6 +21,8 @@ class Iris extends CLI.Command {
 
     val classifier = new classification.Perceptron
     val evalTraining = new evaluation.F1
+    val evalTest = new evaluation.F1
+
     withDataSet(trainingSet) { it =>
       val trainingSet = it.toSeq.take(n)
       1 to Iteration foreach { _ =>
@@ -30,7 +32,6 @@ class Iris extends CLI.Command {
       evaluate(classifier, trainingSet.iterator, evalTraining)
     }
 
-    val evalTest = new evaluation.F1
     withDataSet(tests) { testSet =>
       evaluate(classifier, testSet, evalTest)
     }
