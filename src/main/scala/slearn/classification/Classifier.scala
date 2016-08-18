@@ -1,9 +1,9 @@
 package slearn
 package classification
 
-import types.{Features, Label, TrainingSet}
+import types.{DataSet, Features, Label}
 
 trait Classifier {
-  def train(trainingSet: TrainingSet): Unit
+  def train(trainingSet: DataSet): Unit
   def predict(features: Features): Label
 }

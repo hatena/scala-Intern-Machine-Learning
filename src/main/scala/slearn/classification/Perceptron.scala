@@ -1,12 +1,12 @@
 package slearn
 package classification
 
-import types.{Features, Label, TrainingSet}
+import types.{DataSet, Features, Label}
 
 class Perceptron extends Classifier {
   // 必要なフィールドがあれば適宜足すこと
 
-  def train(trainingSet: TrainingSet): Unit = {
+  def train(trainingSet: DataSet): Unit = {
     // ここに学習アルゴリズムを実装
   }
 

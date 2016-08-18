@@ -1,7 +1,7 @@
 package slearn
 package evaluation
 
-import types.{Accuracy, Label}
+import types.Label
 
 class F1 extends Evaluator {
   // 必要なフィールドがあれば適宜足すこと
@@ -10,7 +10,7 @@ class F1 extends Evaluator {
     // ここでtrue/false positive/negativeを集計
   }
 
-  def accuracy: Accuracy = {
+  def accuracy: Double = {
     // ここを変更してF1スコアを計算
     1.0
   }

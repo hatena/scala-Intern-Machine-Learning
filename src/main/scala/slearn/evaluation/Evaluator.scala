@@ -1,9 +1,9 @@
 package slearn
 package evaluation
 
-import types.{Accuracy, Label}
+import types.Label
 
 trait Evaluator {
   def add(predicted: Label, supervised: Label): Unit
-  def accuracy: Accuracy
+  def accuracy: Double
 }
