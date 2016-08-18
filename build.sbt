@@ -9,7 +9,8 @@ lazy val internml = (project in file(".")).
 
     // Depenency
     libraryDependencies ++= Seq(
-      "org.reflections" % "reflections" % "0.9.9-RC1"
+      "org.reflections" % "reflections" % "0.9.9-RC1",
+      "org.scalatest" %% "scalatest" % "2.2.6" % "test"
     ),
 
     // Compilation

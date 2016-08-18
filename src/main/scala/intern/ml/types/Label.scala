@@ -1,7 +1,7 @@
 package intern.ml
 package types
 
-sealed abstract class Label(value: Int) {
+sealed abstract class Label private (value: Int) {
   def toInt(): Int = value
   def positive: Boolean = value > 0
   def negative: Boolean = value < 0
