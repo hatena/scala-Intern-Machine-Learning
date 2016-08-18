@@ -51,11 +51,11 @@ $ script/iterate.sh <num> <subcommand> <args>...
 とすると
 
 ```
-$ sbt 'run <subcommand> <args>... 1
-$ sbt 'run <subcommand> <args>... 2
-$ sbt 'run <subcommand> <args>... 3
+$ sbt 'run <subcommand> <args>... 1'
+$ sbt 'run <subcommand> <args>... 2'
+$ sbt 'run <subcommand> <args>... 3'
 ...
-$ sbt 'run <subcommand> <args>... <num>
+$ sbt 'run <subcommand> <args>... <num>'
 ```
 
 とするのとだいたい同じになります。(警告などを表示しない、`sbt`の呼び出しを1回にまとめるなど細かな違いはあります。)
@@ -64,7 +64,7 @@ $ sbt 'run <subcommand> <args>... <num>
 
 訓練データセットとテストデータセットの精度もしくは誤り率をスペース区切りにしたものを、データの大きさごとに1行ずつ出力したものを`script/plot.sh`の標準入力に渡すと学習曲線のグラフを表示できます。
 
-`sbt run <subcommand> <args>... <num>`が大きさ`<num>`の精度を1行出力するだけのスクリプトになっていれば、`script/iterate.sh`と併用して
+`sbt 'run <subcommand> <args>... <num>'`が大きさ`<num>`の精度を1行出力するだけのスクリプトになっていれば、`script/iterate.sh`と併用して
 
 ```
 $ script/iterate.sh <num> <subcommand> <args>... | script/plot.sh
