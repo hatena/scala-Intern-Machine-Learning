@@ -26,7 +26,7 @@ object CLI {
   type Map = scala.collection.Map[String, Command]
 
   def normalize(name: String): String =
-    name.take(1).toLowerCase + "[A-Z\\d]".r.replaceAllIn(name.drop(1), { m =>
+    name.take(1).toLowerCase + "[A-Z]".r.replaceAllIn(name.drop(1), { m =>
       "-" + m.group(0).toLowerCase
     })
 
