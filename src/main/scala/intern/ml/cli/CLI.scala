@@ -3,6 +3,7 @@ package cli
 
 import org.reflections.Reflections
 import scala.collection.JavaConverters._
+import types.{Features, Label}
 
 class CLI(commands: CLI.Map) {
   def list: Seq[CLI.Command] = commands.values.toSeq.sortBy(_.name)
@@ -36,5 +37,29 @@ object CLI {
     new CLI(classes.map(_.newInstance.asInstanceOf[Command]).map { cmd =>
       cmd.name -> cmd
     }.toMap)
+  }
+
+  trait DataLoader {
+    type Input = Iterator[(Features, Label)]
+
+    def targetLabel: String
+
+    private def labelOf(label: String): Label =
+      if (label == targetLabel) Label.Positive
+      else Label.Negative
+
+    protected def withCSV[T](fileName: String)(
+      block: Iterator[Seq[String]] => T
+    ): T = {
+      val source = io.Source.fromFile(fileName)
+      try {
+        block(source.getLines.filter(_.nonEmpty).map(_.split(",").toSeq))
+      } finally source.close
+    }
+
+    protected def withDataSet[T](fileName: String)(block: Input => T): T =
+      withCSV(fileName)(lines => block(lines.map { fields =>
+        (1.0 +: fields.dropRight(1).map(_.toDouble), labelOf(fields.last))
+      }))
   }
 }

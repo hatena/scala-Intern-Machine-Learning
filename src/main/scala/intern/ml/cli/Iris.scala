@@ -1,11 +1,11 @@
 package intern.ml
 package cli
 
-import types.{Features, Label}
-
-class Iris extends CLI.Command {
+class Iris extends CLI.Command with CLI.DataLoader {
   final val TargetLabel = "Iris-setosa"
   final val Iteration = 1
+
+  def targetLabel = TargetLabel
 
   def showHelp(): Unit = {
     println(s"${name} <training data set> <test data set> [<size>]")
@@ -38,26 +38,6 @@ class Iris extends CLI.Command {
 
     println(Seq(evalTraining.accuracy, evalTest.accuracy).mkString(" "))
   }
-
-  type Input = Iterator[(Features, Label)]
-
-  private def labelOf(label: String): Label =
-    if (label == TargetLabel) Label.Positive
-    else Label.Negative
-
-  private def withCSV[T](fileName: String)(
-    block: Iterator[Seq[String]] => T
-  ): T = {
-    val source = io.Source.fromFile(fileName)
-    try {
-      block(source.getLines.filter(_.nonEmpty).map(_.split(",").toSeq))
-    } finally source.close
-  }
-
-  private def withDataSet[T](fileName: String)(block: Input => T): T =
-    withCSV(fileName)(lines => block(lines.map { fields =>
-      (fields.dropRight(1).map(_.toDouble), labelOf(fields.last))
-    }))
 
   private def evaluate(
     classifier: classification.Classifier,
