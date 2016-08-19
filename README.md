@@ -19,21 +19,13 @@ $ sbt
 ## コマンドの実行
 
 ```
-$ sbt 'run <subcommand> <args>...'
-```
-
-もしくは
-
-```
-$ sbt
-...
-> run <subcommand> <args>...
+$ script/run <subcommand> <args>...
 ```
 
 利用可能なコマンドは
 
 ```
-$ sbt run
+$ script/run
 ```
 
 で確認可能。
@@ -42,32 +34,32 @@ $ sbt run
 
 ### データセットの大きさを変えて実行
 
-コマンドの引数にデータセットの大きさをとるようにしてあれば、`script/iterate.sh`を使って各大きさでコマンドを実行できます。
+コマンドの引数にデータセットの大きさをとるようにしてあれば、`script/iterate`を使って各大きさでコマンドを実行できます。
 
 ```
-$ script/iterate.sh <num> <subcommand> <args>...
+$ script/iterate <num> <subcommand> <args>...
 ```
 
 とすると
 
 ```
-$ sbt 'run <subcommand> <args>... 1'
-$ sbt 'run <subcommand> <args>... 2'
-$ sbt 'run <subcommand> <args>... 3'
+$ script/run <subcommand> <args>... 1
+$ script/run <subcommand> <args>... 2
+$ script/run <subcommand> <args>... 3
 ...
-$ sbt 'run <subcommand> <args>... <num>'
+$ script/run <subcommand> <args>... <num>
 ```
 
-とするのとだいたい同じになります。(警告などを表示しない、`sbt`の呼び出しを1回にまとめるなど細かな違いはあります。)
+とするのとだいたい同じになります。(警告などを表示しない、内部的な`sbt`の呼び出しを1回にまとめるなど細かな違いはあります。)
 
 ### グラフの表示
 
-訓練データセットとテストデータセットの精度もしくは誤り率をスペース区切りにしたものを、データの大きさごとに1行ずつ出力したものを`script/plot.sh`の標準入力に渡すと学習曲線のグラフを表示できます。
+訓練データセットとテストデータセットの精度もしくは誤り率をスペース区切りにしたものを、データの大きさごとに1行ずつ出力したものを`script/plot`の標準入力に渡すと学習曲線のグラフを表示できます。
 
-`sbt 'run <subcommand> <args>... <num>'`が大きさ`<num>`の精度を1行出力するだけのスクリプトになっていれば、`script/iterate.sh`と併用して
+`script/run <subcommand> <args>... <num>`が大きさ`<num>`の精度を1行出力するだけのスクリプトになっていれば、`script/iterate`と併用して
 
 ```
-$ script/iterate.sh <num> <subcommand> <args>... | script/plot.sh
+$ script/iterate <num> <subcommand> <args>... | script/plot
 ```
 
 などとできます。
